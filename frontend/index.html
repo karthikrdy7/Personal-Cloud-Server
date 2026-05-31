@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personal Cloud Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">PC</div>
+        <div>
+          <h1>Personal Cloud</h1>
+          <p>Control Center</p>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a class="nav-item active" href="#dashboard">Dashboard</a>
+        <a class="nav-item" href="#files">Files</a>
+        <a class="nav-item" href="#upload">Upload</a>
+        <a class="nav-item" href="#status">Server Status</a>
+      </nav>
+
+      <div class="sidebar-card">
+        <span class="sidebar-label">Quick Action</span>
+        <button id="sidebarUploadBtn" class="button button-primary" type="button">Upload File</button>
+      </div>
+    </aside>
+
+    <main class="content" id="dashboard">
+      <div id="toastHost" class="toast-host" aria-live="polite" aria-atomic="true"></div>
+      <div id="previewModal" class="preview-modal" aria-hidden="true">
+        <div class="preview-backdrop" data-close-preview></div>
+        <div class="preview-dialog" role="dialog" aria-modal="true" aria-labelledby="previewTitle">
+          <div class="preview-header">
+            <div>
+              <span class="eyebrow">File Preview</span>
+              <h3 id="previewTitle">Preview</h3>
+            </div>
+            <button id="closePreviewBtn" class="button button-secondary preview-close" type="button">Close</button>
+          </div>
+          <div id="previewContent" class="preview-content"></div>
+        </div>
+      </div>
+
+      <header class="topbar">
+        <div>
+          <span class="eyebrow">Personal Cloud Platform</span>
+          <h2>Dashboard Overview</h2>
+          <p>Monitor storage, manage files, and keep the server healthy.</p>
+        </div>
+
+        <div class="topbar-actions">
+          <span id="serverBadge" class="status-pill status-loading">Checking server...</span>
+          <button id="refreshBtn" class="button button-secondary" type="button">Refresh</button>
+        </div>
+      </header>
+
+      <section class="cards-grid">
+        <article class="stat-card accent-1">
+          <span class="stat-label">Storage Usage</span>
+          <div class="stat-value"><span id="storageUsed">0</span> GB</div>
+          <div class="progress-track">
+            <div id="storageBar" class="progress-fill"></div>
+          </div>
+          <small id="storageMeta">0% used</small>
+        </article>
+
+        <article class="stat-card accent-2">
+          <span class="stat-label">Free Storage</span>
+          <div class="stat-value"><span id="freeStorage">0</span> GB</div>
+          <small>Available for new uploads</small>
+        </article>
+
+        <article class="stat-card accent-3">
+          <span class="stat-label">File Count</span>
+          <div class="stat-value" id="fileCount">0</div>
+          <small id="fileMeta">No files uploaded yet</small>
+        </article>
+
+        <article class="stat-card accent-4" id="status">
+          <span class="stat-label">Server Status</span>
+          <div class="stat-value" id="serverStatus">Unknown</div>
+          <small id="serverDetail">Waiting for server response</small>
+        </article>
+      </section>
+
+      <section class="panel system-panel" id="system-info">
+        <div class="panel-header">
+          <div>
+            <span class="eyebrow">System Health</span>
+            <h3>Live system information</h3>
+          </div>
+          <span class="hint">GET /system-info</span>
+        </div>
+
+        <div class="system-grid">
+          <article class="system-item">
+            <span class="system-label">CPU Usage</span>
+            <strong id="cpuUsage">0%</strong>
+          </article>
+          <article class="system-item">
+            <span class="system-label">RAM Usage</span>
+            <strong id="ramUsage">0%</strong>
+            <small id="ramDetail">0 B used / 0 B total</small>
+          </article>
+          <article class="system-item">
+            <span class="system-label">Uptime</span>
+            <strong id="systemUptime">0s</strong>
+          </article>
+          <article class="system-item">
+            <span class="system-label">Hostname</span>
+            <strong id="systemHostname">Unknown</strong>
+          </article>
+          <article class="system-item">
+            <span class="system-label">Platform</span>
+            <strong id="systemPlatform">Unknown</strong>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel upload-panel" id="upload">
+        <div class="panel-header">
+          <div>
+            <span class="eyebrow">Upload Center</span>
+            <h3>Send files to your cloud</h3>
+          </div>
+          <span class="hint">POST /upload</span>
+        </div>
+
+        <div class="upload-dropzone" id="dropzone">
+          <input id="fileInput" type="file" multiple hidden />
+          <div class="dropzone-icon">⬆</div>
+          <h4>Drag and drop a file here</h4>
+          <p>or choose a file to upload from your device.</p>
+          <div class="upload-actions">
+            <button id="chooseFileBtn" class="button button-secondary" type="button">Choose File</button>
+            <button id="uploadBtn" class="button button-primary" type="button" disabled>Upload Now</button>
+          </div>
+          <div id="selectedFile" class="selected-file">No file selected</div>
+          <div id="selectedFilesList" class="selected-files"></div>
+          <div class="upload-progress">
+            <div class="upload-progress-head">
+              <span id="uploadProgressLabel">Ready to upload</span>
+              <span id="uploadProgressValue">0%</span>
+            </div>
+            <div class="progress-track progress-track-large">
+              <div id="uploadProgressBar" class="progress-fill"></div>
+            </div>
+          </div>
+          <div id="uploadMessage" class="message"></div>
+        </div>
+      </section>
+
+      <section class="panel files-panel" id="files">
+        <div class="panel-header">
+          <div>
+            <span class="eyebrow">File Library</span>
+            <h3>Uploaded files</h3>
+          </div>
+          <span class="hint">GET /files</span>
+        </div>
+
+        <div id="filesList" class="files-list">
+          <div class="empty-state">Loading files...</div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

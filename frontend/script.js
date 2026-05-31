@@ -1,4 +1,6 @@
-const API_BASE = 'http://127.0.0.1:3000';
+const API_BASE = ['http:', 'https:'].includes(window.location.protocol)
+  ? window.location.origin
+  : 'http://127.0.0.1:3000';
 
 const storageUsedEl = document.getElementById('storageUsed');
 const freeStorageEl = document.getElementById('freeStorage');

@@ -1,10 +1,12 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 
 const config = require('./config');
 const rootRoutes = require('./routes');
 
 const app = express();
+const frontendDir = path.join(config.rootDir, 'frontend');
 
 const corsOptions = config.corsOrigins === true
 	? {}
@@ -21,6 +23,14 @@ app.use(express.json({ limit: '10mb' }));
 
 // Parse form submissions for future API routes.
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+
+// Serve the dashboard UI from the backend so LAN/mobile clients can open one URL.
+app.use(express.static(frontendDir));
+
+// Keep the app available on the root URL for phone browsers.
+app.get('/', (req, res) => {
+	res.sendFile(path.join(frontendDir, 'index.html'));
+});
 
 // Keep route handlers separate from server startup logic.
 app.use('/', rootRoutes);

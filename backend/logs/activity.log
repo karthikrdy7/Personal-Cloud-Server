@@ -1,3 +1,0 @@
-{"timestamp":"2026-05-31T11:25:10.117Z","action":"login_attempt","status":"success","details":{"username":"demo","ipAddress":"127.0.0.1"}}
-{"timestamp":"2026-05-31T11:25:10.130Z","action":"upload_file","status":"success","details":{"originalName":"pcloud-log-test-XXXX.txt","fileName":"1780226710129-506569752-pcloud-log-test-XXXX.txt","size":9}}
-{"timestamp":"2026-05-31T11:25:10.196Z","action":"delete_file","status":"success","details":{"fileName":"1780226710129-506569752-pcloud-log-test-XXXX.txt"}}

@@ -55,7 +55,7 @@ Syncthing auto-discovers peers over the Tailscale network — no manual IP/port 
 If you want plain-browser access to files on the old phone (without opening Syncthing's UI):
 
 cd /storage/emulated/0/SyncedFolder
-
+Command:
 **python -m http.server 8080**
 
 

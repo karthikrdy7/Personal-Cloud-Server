@@ -21,7 +21,7 @@ _Requirements_
 | **Laptop** (sender) | Tailscale, Syncthing |
 
 
-🚀 Setup
+Setup
 1. Connect all devices with Tailscale
 
 Install Tailscale on all three devices and log in with the same account. Each device gets a stable private IP (100.x.x.x) and can reach the others directly, regardless of network/location.

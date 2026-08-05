@@ -35,8 +35,8 @@ pkg install python openssh
 termux-setup-storage   # grants access to shared Android storage
 
 
-**Disable battery optimization for Termux, Tailscale, and Syncthing so they keep running in the background.
-**
+Disable battery optimization for Termux, Tailscale, and Syncthing so they keep running in the background.
+
 
 3. Set up Syncthing
    

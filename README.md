@@ -2,7 +2,6 @@
 
 Transform an old Android phone into a secure Personal Cloud Storage Server using Tailscale, Syncthing, and Termux. This project provides automatic file synchronization, encrypted remote access, and browser-based file sharing without relying on third-party cloud providers.
 
-⸻
 
 ✨ Features
 
@@ -15,29 +14,6 @@ Transform an old Android phone into a secure Personal Cloud Storage Server using
 * 💾 Reuse an old Android phone as a dedicated storage node
 * ⚡ Low power consumption and easy to maintain
 
-⸻
-
-🏗️ System Architecture
-
-                    +----------------------+
-                    |       Laptop         |
-                    | Syncthing + Tailscale|
-                    +----------+-----------+
-                               |
-                               |
-                    Encrypted Tailnet
-                     (WireGuard VPN)
-                               |
-              +----------------+----------------+
-              |                                 |
-              |                                 |
-+-------------+-------------+      +------------+------------+
-| Primary Android Phone     |      | Old Android Phone       |
-| Syncthing + Tailscale     |<---->| Storage Server          |
-|                           |      | Termux + Python Server  |
-+---------------------------+      +-------------------------+
-
-⸻
 
 🛠️ Tech Stack
 
@@ -49,8 +25,6 @@ Termux	Linux environment on Android
 Python	Lightweight HTTP file server
 OpenSSH	Secure remote shell (optional)
 
-⸻
-
 📡 Protocols Used
 
 Protocol	Purpose
@@ -61,7 +35,6 @@ HTTP	Browser-based file access
 SSH	Remote terminal access
 mDNS / Global Discovery	Device discovery
 
-⸻
 
 📋 Requirements
 
@@ -70,7 +43,6 @@ Old Android Phone	Termux, Tailscale, Syncthing
 Primary Android Phone	Tailscale, Syncthing
 Laptop / PC	Tailscale, Syncthing
 
-⸻
 
 🚀 Installation
 
@@ -82,7 +54,6 @@ Each device automatically receives a private 100.x.x.x IP address.
 
 No port forwarding or router configuration is required.
 
-⸻
 
 2️⃣ Configure the Storage Phone
 
@@ -100,7 +71,6 @@ Disable battery optimization for:
 * Syncthing
 * Tailscale
 
-⸻
 
 3️⃣ Configure Syncthing
 
@@ -124,7 +94,6 @@ Receive Only
 
 This prevents accidental deletion of backup files.
 
-⸻
 
 4️⃣ Start HTTP File Server (Optional)
 
@@ -139,7 +108,6 @@ Example:
 
 http://100.96.54.12:8080
 
-⸻
 
 5️⃣ Keep Services Running
 
@@ -153,7 +121,6 @@ Recommended:
 * Keep the storage phone charging
 * Connect to Wi-Fi
 
-⸻
 
 🔐 Security
 
@@ -164,7 +131,7 @@ Recommended:
 * Peer-to-peer communication
 * Zero third-party cloud dependency
 
-⸻
+
 
 📁 Project Structure
 
@@ -182,7 +149,7 @@ Android-Personal-Cloud/
 │
 └── LICENSE
 
-⸻
+
 
 🌟 Advantages
 
@@ -195,7 +162,6 @@ Android-Personal-Cloud/
 * Easy to scale
 * Lightweight solution
 
-⸻
 
 ⚠️ Limitations
 
@@ -203,8 +169,6 @@ Android-Personal-Cloud/
 * Sync speed depends on internet connection
 * Limited by phone storage capacity
 * Background services may require battery optimization to be disabled
-
-⸻
 
 📚 Use Cases
 
@@ -216,7 +180,6 @@ Android-Personal-Cloud/
 * Student Project
 * Offline Backup Server
 
-⸻
 
 🔮 Future Improvements
 
@@ -229,7 +192,6 @@ Android-Personal-Cloud/
 * File compression
 * Notifications
 
-⸻
 
 🤝 Contributing
 
@@ -240,13 +202,11 @@ Contributions are welcome!
 3. Commit your changes
 4. Open a Pull Request
 
-⸻
 
 📄 License
 
 This project is licensed under the MIT License.
 
-⸻
 
 👨‍💻 Author
 

@@ -3,7 +3,7 @@
 Transform an old Android phone into a secure Personal Cloud Storage Server using Tailscale, Syncthing, and Termux. This project provides automatic file synchronization, encrypted remote access, and browser-based file sharing without relying on third-party cloud providers.
 
 
-✨ Features
+**Features**
 
 * 🔒 End-to-end encrypted private network using WireGuard (Tailscale)
 * 📂 Peer-to-peer file synchronization with Syncthing
@@ -14,6 +14,29 @@ Transform an old Android phone into a secure Personal Cloud Storage Server using
 * 💾 Reuse an old Android phone as a dedicated storage node
 * ⚡ Low power consumption and easy to maintain
 
+**🏗️ System Architecture**
+
+```
+                  +-------------------------+
+                  |        Laptop           |
+                  |  Syncthing + Tailscale  |
+                  +-----------+-------------+
+                              |
+                              |
+                    Encrypted Tailnet
+                     (WireGuard VPN)
+                              |
+          +-------------------+-------------------+
+          |                                       |
+          |                                       |
++---------v----------+                 +----------v---------+
+| Primary Android    |                 | Old Android Phone  |
+| Syncthing          | <-------------> | Storage Server     |
+| Tailscale          |                 | Termux + Python    |
++--------------------+                 | Tailscale +        |
+                                       | Syncthing          |
+                                       +--------------------+
+```
 
 🛠️ Tech Stack
 

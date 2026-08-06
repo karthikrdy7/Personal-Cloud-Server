@@ -135,19 +135,19 @@ Recommended:
 
 📁 Project Structure
 
+## 📁 Project Structure
+
+```
 Android-Personal-Cloud/
-│
 ├── README.md
 ├── docs/
 │   ├── architecture.png
-│   ├── setup-guide.pdf
-│   └── screenshots/
-│
+│   └── setup-guide.pdf
 ├── scripts/
 │   ├── start_server.sh
 │   └── auto_start.sh
-│
 └── LICENSE
+```
 
 
 
